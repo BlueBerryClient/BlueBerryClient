@@ -24,6 +24,7 @@ public class ModEntryPoint implements ModInitializer, ClientModInitializer {
     public void onInitializeClient() {
         blueBarryEntryPoint.init();
         DiscordRPC.Start();
+        System.out.println("Blueberry has been initialized!");
     }
 
     protected static Blueberry getBlueBarryEntryPoint() {
