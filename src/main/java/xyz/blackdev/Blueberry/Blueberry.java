@@ -3,7 +3,6 @@ package xyz.blackdev.Blueberry;
 import xyz.blackdev.Blueberry.basesystem.SystemManager;
 import xyz.blackdev.Blueberry.discord.DiscordRPC;
 import xyz.blackdev.Blueberry.skija.core.SkiaRenderer;
-import xyz.blackdev.Blueberry.systems.TestSystem;
 
 public class Blueberry {
 
