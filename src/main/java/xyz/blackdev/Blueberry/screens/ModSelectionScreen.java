@@ -1,22 +1,12 @@
 package xyz.blackdev.Blueberry.screens;
 
-import io.github.humbleui.skija.Font;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.FontManager;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.LogoDrawer;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.texture.TextureManager;
 import net.minecraft.text.Text;
-import org.joml.Matrix4f;
-import org.lwjgl.opengl.GL30;
 import xyz.blackdev.Blueberry.skija.core.SkiaHelper;
 import xyz.blackdev.Blueberry.skija.core.SkiaRenderer;
-import xyz.blackdev.Blueberry.skija.core.util.font.FontUtils;
 import xyz.blackdev.Blueberry.utils.CustomClientButton;
 import xyz.blackdev.Blueberry.utils.RenderUtils;
 
