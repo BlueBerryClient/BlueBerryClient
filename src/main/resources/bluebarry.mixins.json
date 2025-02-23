@@ -1,0 +1,27 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "xyz.blackdev.Blueberry.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+  ],
+  "client": [
+    "backgrounds.RenderBackgroundMixin",
+    "backgrounds.TitleScreenBackgroundMixin",
+    "displays.MinecraftClientMixin",
+    "guicomponents.chat.ChatHistoryMixin",
+    "guicomponents.widgets.MixinPressableWidget",
+    "guicomponents.widgets.MixinSliderWidget",
+    "player.LivingEntityRendererMixin",
+    "renderers.GameRendererMixin",
+    "renderers.LogoDrawerMixin",
+    "screenmixins.titlescreen.TitleScreenButtonMixin",
+    "screenmixins.titlescreen.TitleScreenTextMixin",
+    "skijamixins.MinecraftMixin",
+    "skijamixins.ScreenMixin",
+    "utils.tick.ClientTickMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

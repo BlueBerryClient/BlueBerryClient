@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "blueberrry",
+  "version": "${version}",
+  "name": "BlueBerry",
+  "description": "Minecraft Client named BlueBerry",
+  "authors": ["BlackDev"],
+  "contact": {
+    "homepage": "https://blackdev.xyz"},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/Blueberry/textures/icons/512x512.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "xyz.blackdev.Blueberry.ModEntryPoint"
+    ],
+    "main": [
+      "xyz.blackdev.Blueberry.ModEntryPoint"
+    ]
+  },
+  "mixins": [
+    "bluebarry.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
