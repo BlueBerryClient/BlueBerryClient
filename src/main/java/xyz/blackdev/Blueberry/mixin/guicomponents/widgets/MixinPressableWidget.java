@@ -23,8 +23,8 @@ public abstract class MixinPressableWidget extends ClickableWidget {
    }
 
    /**
-    * @author
-    * @reason
+    * @author BlackDev
+    * @reason Change the button rendering
     */
    @Overwrite
    public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {

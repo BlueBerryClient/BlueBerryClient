@@ -33,8 +33,8 @@ public abstract class MixinTabButtonWidget extends ClickableWidget {
    protected abstract void renderBackgroundTexture(DrawContext var1, int var2, int var3, int var4, int var5);
 
    /**
-    * @author
-    * @reason
+    * @author BlackDev
+    * @reason Fixing TabButtonWidget rendering
     */
    @Overwrite
    public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
@@ -48,6 +48,10 @@ public abstract class MixinTabButtonWidget extends ClickableWidget {
 
    }
 
+   /**
+    * @author BlackDev
+    * @reason Change the button rendering
+    */
    @Overwrite
    public void drawMessage(DrawContext context, TextRenderer textRenderer, int color) {
       int i = this.getX() + 1;
@@ -57,6 +61,10 @@ public abstract class MixinTabButtonWidget extends ClickableWidget {
       drawScrollableText(context, textRenderer, this.getMessage(), i, j, k, l, color);
    }
 
+   /**
+    * @author BlackDev
+    * @reason Change the button rendering
+    */
    @Overwrite
    private void drawCurrentTabLine(DrawContext context, TextRenderer textRenderer, int color) {
       int i = Math.min(textRenderer.getWidth(this.getMessage()), this.getWidth() - 4);

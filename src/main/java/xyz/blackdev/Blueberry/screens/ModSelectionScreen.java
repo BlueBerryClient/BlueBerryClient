@@ -61,9 +61,7 @@ public class ModSelectionScreen extends Screen {
         RenderUtils.renderBorderedRect(context, 30, 60, this.width - 30, this.height - 30, 0x80000000, 0xFF000000);
         RenderUtils.renderBorderedRect(context, 30, 60, this.width - 330, this.height - 30, 0x40000000, 0xFF000000);
         RenderUtils.drawtext("BlueBerry", 40, 70, 0xFFFFFFFF, true);
-        SkiaRenderer.begin();
         SkiaHelper.rrect(30, 60, this.width - 30, this.height - 30, 10f, SkiaHelper.paint(Color.black));
-        SkiaRenderer.end();
         this.logoDrawer.draw(context, this.width, 1.0F);
     }
 }

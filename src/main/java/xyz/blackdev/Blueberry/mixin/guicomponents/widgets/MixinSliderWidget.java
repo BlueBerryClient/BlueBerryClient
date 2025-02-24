@@ -25,6 +25,10 @@ public class MixinSliderWidget extends ClickableWidget  {
    public void appendClickableNarrations(NarrationMessageBuilder builder) {
    }
 
+   /**
+    * @author BlackDev
+    * @reason Change the slider rendering
+    */
    @Overwrite
    public void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
       int colBlack = (new Color(0, 0, 0, 175)).getRGB();
