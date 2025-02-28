@@ -12,6 +12,7 @@
     "guicomponents.chat.ChatHistoryMixin",
     "guicomponents.widgets.MixinPressableWidget",
     "guicomponents.widgets.MixinSliderWidget",
+    "guicomponents.widgets.MixinTabButtonWidget",
     "player.LivingEntityRendererMixin",
     "renderers.GameRendererMixin",
     "renderers.LogoDrawerMixin",

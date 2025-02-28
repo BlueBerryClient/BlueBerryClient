@@ -1,6 +1,8 @@
 package xyz.blackdev.Blueberry.mixin.backgrounds;
 
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.screen.GameMenuScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
@@ -25,7 +27,11 @@ public class RenderBackgroundMixin {
      */
     @Overwrite
     public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {
-        context.drawTexture(renderLayerFunction, bg, -21 / 90, -1 / 90, 0.0f, 0.0f, this.width + 100, this.height + 100, (this.width + 41), (this.height + 40));
+        if (MinecraftClient.getInstance().currentScreen instanceof GameMenuScreen) {
+
+        } else {
+            context.drawTexture(renderLayerFunction, bg, -21 / 90, -1 / 90, 0.0f, 0.0f, this.width + 100, this.height + 100, (this.width + 41), (this.height + 40));
+        }
     }
 
     /**

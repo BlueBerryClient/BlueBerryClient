@@ -1,6 +1,9 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id 'fabric-loom' version '1.10-SNAPSHOT'
     id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 version = project.mod_version
@@ -27,38 +30,21 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     //IPC
-    implementation "com.google.code.gson:gson:2.8.9"
     modImplementation "com.google.code.gson:gson:2.8.9"
-    include "com.google.code.gson:gson:2.8.9"
-    compileOnly "com.google.code.gson:gson:2.8.9"
 
     //Skija windows
-    implementation 'io.github.humbleui:skija-windows-x64:0.116.4'
     modImplementation 'io.github.humbleui:skija-windows-x64:0.116.4'
-    include 'io.github.humbleui:skija-windows-x64:0.116.4'
-    compileOnly 'io.github.humbleui:skija-windows-x64:0.116.4'
-
     //Skija linux
-    implementation 'io.github.humbleui:skija-linux-x64:0.116.4'
     modImplementation 'io.github.humbleui:skija-linux-x64:0.116.4'
-    include 'io.github.humbleui:skija-linux-x64:0.116.4'
-    compileOnly 'io.github.humbleui:skija-linux-x64:0.116.4'
 
     //Skija mac
-    implementation 'io.github.humbleui:skija-macos-x64:0.116.4'
     modImplementation 'io.github.humbleui:skija-macos-x64:0.116.4'
-    include 'io.github.humbleui:skija-macos-x64:0.116.4'
-    compileOnly 'io.github.humbleui:skija-macos-x64:0.116.4'
 
     //ARM
-    implementation 'io.github.humbleui:skija-macos-arm64:0.116.4'
     modImplementation 'io.github.humbleui:skija-macos-arm64:0.116.4'
-    include 'io.github.humbleui:skija-macos-arm64:0.116.4'
-    compileOnly 'io.github.humbleui:skija-macos-arm64:0.116.4'
 }
 
 processResources {
@@ -102,6 +88,12 @@ jar {
         rename { "${it}_${project.archivesBaseName}" }
     }
 }
+
+tasks.named('shadowJar', ShadowJar) {
+    archiveClassifier = ''
+    zip64(true)
+}
+
 
 // configure the maven publication
 publishing {
