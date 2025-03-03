@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import xyz.blackdev.Blueberry.utils.RenderUtils;
 
-//@Mixin(InGameHud.class)
+@Mixin(InGameHud.class)
 public class InGameHudMixin {
 
     private static final Identifier HOTBAR_ATTACK_INDICATOR_BACKGROUND_TEXTURE = Identifier.ofVanilla("hud/hotbar_attack_indicator_background");
@@ -74,7 +74,7 @@ public class InGameHudMixin {
             //context.drawGuiTexture(RenderLayer::getGuiTextured, HOTBAR_SELECTION_TEXTURE, i - 91 - 1 + playerEntity.getInventory().selectedSlot * 20, context.getScaledWindowHeight() - 22 - 1, 24, 23);
             //RenderUtils.renderBorderedRect(context,i - 91, context.getScaledWindowHeight() - 22, 182, 22,0x80000000,0xFF000000);
             //RenderUtils.renderBorderedRect(context, i - 91 - 1 + playerEntity.getInventory().selectedSlot * 20, context.getScaledWindowHeight() - 22 - 1, 24, 23,0x80000000,0xFF000000);
-
+            RenderUtils.renderBorderedRect(context, context.getScaledWindowWidth()/2 - 90, context.getScaledWindowHeight() ,307, 217,0x80000000,0x80000000);
 
             if (!itemStack.isEmpty()) {
                 if (arm == Arm.LEFT) {

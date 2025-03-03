@@ -34,7 +34,7 @@ dependencies {
 
     //IPC
     modImplementation "com.google.code.gson:gson:2.8.9"
-
+/*
     //Skija windows
     modImplementation 'io.github.humbleui:skija-windows-x64:0.116.4'
     //Skija linux
@@ -45,6 +45,7 @@ dependencies {
 
     //ARM
     modImplementation 'io.github.humbleui:skija-macos-arm64:0.116.4'
+ */
 }
 
 processResources {

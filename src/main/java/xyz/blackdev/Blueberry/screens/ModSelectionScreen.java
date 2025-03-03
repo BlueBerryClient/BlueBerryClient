@@ -12,8 +12,6 @@ import xyz.blackdev.Blueberry.notification.Notification;
 import xyz.blackdev.Blueberry.notification.NotificationManager;
 import xyz.blackdev.Blueberry.notification.NotificationType;
 import xyz.blackdev.Blueberry.screens.impl.*;
-import xyz.blackdev.Blueberry.skija.core.SkiaHelper;
-import xyz.blackdev.Blueberry.skija.core.SkiaRenderer;
 import xyz.blackdev.Blueberry.utils.CustomClientButton;
 import xyz.blackdev.Blueberry.utils.RenderUtils;
 
@@ -40,6 +38,7 @@ public class ModSelectionScreen extends Screen {
                 .build();
         CustomClientButton CosmeticButton = CustomClientButton.builder(Text.literal("Cosmetics"), (button) -> {
             client.setScreen(new CosmeticsSelectionScreen(Text.of("Cosmetics"), logoDrawer));
+            NotificationManager.show(new Notification(NotificationType.INFORMATION, "Cosmetics", "Cosmetics Button Clicked", 5000));
         }).position(this.width / 2 - 180, this.height / 2  - 13 -5).size(60, 20).build();
         CustomClientButton ModsMutton = CustomClientButton.builder(Text.literal("Mods"), (button) -> {
             client.setScreen(new ModsSelectionScreen(Text.of("Mods"), logoDrawer));
@@ -87,7 +86,6 @@ public class ModSelectionScreen extends Screen {
                 RenderUtils.drawtext("BlueBerry", 40, 70, 0xFFFFFFFF, true);
             }
         }
-        SkiaHelper.rrect(30, 60, this.width - 30, this.height - 30, 10f, SkiaHelper.paint(Color.black));
         this.logoDrawer.draw(context, this.width, 1.0F);
     }
 }

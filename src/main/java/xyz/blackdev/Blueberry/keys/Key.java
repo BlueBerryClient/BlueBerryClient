@@ -1,23 +1,19 @@
 package xyz.blackdev.Blueberry.keys;
 
 public interface Key {
-
-    int getkey();
-
-    String getName();
-
-    void releaseaction();
-
-    void pressaction();
-
-    void holdaction();
-
-    default void onscrollup() {
+    int getKey();
+    void pressAction();
+    void holdAction();
+    default String getName() {
+        return "BlueBerry";
+    }
+    default void onScrollUp() {
 
     }
-
-    default void onscrolldown() {
+    default void onScrollDown() {
 
     }
-
+    boolean isPressed();
+    void setPressed(boolean pressed);
+    void releaseAction();
 }

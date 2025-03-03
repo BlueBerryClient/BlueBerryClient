@@ -17,7 +17,6 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import xyz.blackdev.Blueberry.discord.DiscordRPC;
 import xyz.blackdev.Blueberry.screens.ModSelectionScreen;
-import xyz.blackdev.Blueberry.skija.front.Panel;
 
 @Mixin(TitleScreen.class)
 public class TitleScreenButtonMixin extends Screen {

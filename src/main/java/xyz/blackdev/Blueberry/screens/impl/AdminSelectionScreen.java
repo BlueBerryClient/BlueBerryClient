@@ -8,7 +8,6 @@ import net.minecraft.text.Text;
 import xyz.blackdev.Blueberry.notification.Notification;
 import xyz.blackdev.Blueberry.notification.NotificationManager;
 import xyz.blackdev.Blueberry.notification.NotificationType;
-import xyz.blackdev.Blueberry.skija.core.SkiaHelper;
 import xyz.blackdev.Blueberry.utils.CustomClientButton;
 import xyz.blackdev.Blueberry.utils.RenderUtils;
 
@@ -76,7 +75,6 @@ public class AdminSelectionScreen extends Screen {
                 RenderUtils.drawtext("Admin", 40, 70, 0xFFFFFFFF, true);
             }
         }
-        SkiaHelper.rrect(30, 60, this.width - 30, this.height - 30, 10f, SkiaHelper.paint(Color.black));
         this.logoDrawer.draw(context, this.width, 1.0F);
     }
 }

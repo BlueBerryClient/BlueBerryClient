@@ -22,7 +22,7 @@ public class KeyInputRegestry {
     private static void registerkey(Key... keyArray) {
         keys.addAll(List.of(keyArray));
         for (Key key : keyArray) {
-            KeyBinding binding = KeyBindingHelper.registerKeyBinding(new KeyBinding(key.getName(), InputUtil.Type.KEYSYM, key.getkey(), KEY_CATEGORY));
+            KeyBinding binding = KeyBindingHelper.registerKeyBinding(new KeyBinding(key.getName(), InputUtil.Type.KEYSYM, key.getKey(), KEY_CATEGORY));
 
         regiserkeyinput(binding, key);
 
@@ -33,13 +33,13 @@ public class KeyInputRegestry {
         final boolean[] wasPressed = {false};
         ClientTickEvents.END_CLIENT_TICK.register(tick -> {
             if (binding.wasPressed()) {
-                key.pressaction();
+                key.pressAction();
             }
             boolean isPressed = binding.isPressed();
             if (isPressed) {
-                key.holdaction();
+                key.holdAction();
             }else if (wasPressed[0]) {
-                key.releaseaction();
+                key.releaseAction();
             }
             wasPressed[0] = isPressed;
         });

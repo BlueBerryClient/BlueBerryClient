@@ -8,8 +8,10 @@
   "client": [
     "backgrounds.RenderBackgroundMixin",
     "backgrounds.TitleScreenBackgroundMixin",
+    "cosmetics.capes.CapeLayerMixin",
     "displays.MinecraftClientMixin",
     "guicomponents.chat.ChatHistoryMixin",
+    "guicomponents.hotbar.InGameHudMixin",
     "guicomponents.widgets.MixinPressableWidget",
     "guicomponents.widgets.MixinSliderWidget",
     "guicomponents.widgets.MixinTabButtonWidget",
@@ -18,9 +20,8 @@
     "renderers.LogoDrawerMixin",
     "screenmixins.titlescreen.TitleScreenButtonMixin",
     "screenmixins.titlescreen.TitleScreenTextMixin",
-    "skijamixins.MinecraftMixin",
-    "skijamixins.ScreenMixin",
-    "utils.tick.ClientTickMixin"
+    "utils.tick.ClientTickMixin",
+    "utils.tick.PendingConnectionMixin"
   ],
   "injectors": {
     "defaultRequire": 1
