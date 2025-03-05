@@ -23,15 +23,10 @@ public class Blueberry {
     }
     ConfigManager configManager = new ConfigManager();
     protected void init() {
-
          cape = Identifier.of(defaultdir,configManager.getConfigValue("CAPETEXTURE").toString());
     }
 
     public SystemManager system() {
         return manager;
-    }
-
-    public void onPostInit() {
-        DiscordRPC.Start();
     }
 }

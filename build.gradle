@@ -32,11 +32,18 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.google.code.gson:gson:2.8.9'
+    modImplementation (include "org.json:json:20250107")
+
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.google.code.gson:gson:2.8.9'
+
     //IPC
-    modImplementation "com.google.code.gson:gson:2.8.9"
+    modImplementation (include "com.google.code.gson:gson:2.8.9")
 /*
     //Skija windows
-    modImplementation 'io.github.humbleui:skija-windows-x64:0.116.4'
+    modImplementation "io.github.humbleui:skija-windows-x64:0.116.4"
     //Skija linux
     modImplementation 'io.github.humbleui:skija-linux-x64:0.116.4'
 
@@ -46,6 +53,7 @@ dependencies {
     //ARM
     modImplementation 'io.github.humbleui:skija-macos-arm64:0.116.4'
  */
+
 }
 
 processResources {
@@ -90,11 +98,9 @@ jar {
     }
 }
 
-tasks.named('shadowJar', ShadowJar) {
-    archiveClassifier = ''
-    zip64(true)
+configurations {
+    runtime.extendsFrom(compileClasspath, runtimeOnly)
 }
-
 
 // configure the maven publication
 publishing {
@@ -104,6 +110,7 @@ publishing {
             from components.java
         }
     }
+
 
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {

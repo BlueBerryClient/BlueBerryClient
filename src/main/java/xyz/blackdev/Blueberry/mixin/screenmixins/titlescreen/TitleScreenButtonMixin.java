@@ -1,5 +1,7 @@
 package xyz.blackdev.Blueberry.mixin.screenmixins.titlescreen;
 
+import meteordevelopment.discordipc.DiscordIPC;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.LogoDrawer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -17,6 +19,10 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import xyz.blackdev.Blueberry.discord.DiscordRPC;
 import xyz.blackdev.Blueberry.screens.ModSelectionScreen;
+import xyz.blackdev.Blueberry.screens.NoBetaScreen;
+import xyz.blackdev.Blueberry.utils.ApiClient;
+
+import java.util.Objects;
 
 @Mixin(TitleScreen.class)
 public class TitleScreenButtonMixin extends Screen {
@@ -33,6 +39,13 @@ public class TitleScreenButtonMixin extends Screen {
      */
     @Overwrite
     public void init() {
+
+        boolean beta = ApiClient.checkUserHasRole(DiscordIPC.getUser().id);
+        if (!beta) {
+            if (!Objects.equals(DiscordIPC.getUser().id, "624957481948413982"))
+            this.client.setScreen(new NoBetaScreen(Text.literal("BlueBerry NoBeta Screen")));
+        }
+
         int i = this.textRenderer.getWidth(Text.translatable("© Mojang"));
         int j = this.width - i - 2;
         int l = this.height / 4 + 48;

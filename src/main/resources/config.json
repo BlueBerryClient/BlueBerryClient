@@ -1,3 +1,4 @@
 {
-  "CAPETEXTURE": "textures/capes/test.png"
+  "CAPETEXTURE": "textures/capes/test.png",
+  "COPYCOORDS": "true"
 }

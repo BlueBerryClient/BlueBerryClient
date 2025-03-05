@@ -1,5 +1,6 @@
 package xyz.blackdev.Blueberry;
 
+import meteordevelopment.discordipc.DiscordIPC;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -15,6 +16,7 @@ import xyz.blackdev.Blueberry.discord.DiscordRPC;
 import xyz.blackdev.Blueberry.events.Events.ConnectEventListener;
 import xyz.blackdev.Blueberry.events.Events.RenderEvent;
 import xyz.blackdev.Blueberry.keys.KeyInputRegestry;
+import xyz.blackdev.Blueberry.utils.ApiClient;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;

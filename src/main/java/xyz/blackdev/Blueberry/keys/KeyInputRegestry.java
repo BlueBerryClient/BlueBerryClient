@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import xyz.blackdev.Blueberry.keys.impl.CopyCordsKey;
 import xyz.blackdev.Blueberry.keys.impl.MainMenuKey;
 
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ public class KeyInputRegestry {
     public static void register() {
         MainMenuKey mainMenuKey = new MainMenuKey();
         registerkey(mainMenuKey);
+        CopyCordsKey copyCordsKey = new CopyCordsKey();
+        registerkey(copyCordsKey);
     }
 
     private static void registerkey(Key... keyArray) {
