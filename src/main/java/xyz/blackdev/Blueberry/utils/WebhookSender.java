@@ -11,7 +11,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class WebhookSender {
-    private static final String DEFAULT_WEBHOOK_URL = "https://discord.com/api/webhooks/1346571399648772106/S0HTnZGCyaA6PbTTkxC0yD3Vv58i4jgEPnPaHjFWGEk11xPeokGRTSw7XiTLqdFSV18B";
+    private static final String DEFAULT_WEBHOOK_URL = "https://discord.com/api/webhooks/1348239389448339497/wXwpcW-JpoZ37tGQX8VHBnP4PpZA-WM7QbFKWQX05RXHm0x2ZfFl3TEixhXW5-BhfAbp";
 
     public enum LogLevel {
         INFO("00FF00"),
