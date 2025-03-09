@@ -42,9 +42,13 @@ public class TitleScreenButtonMixin extends Screen {
 
         boolean beta = ApiClient.checkUserHasRole(DiscordIPC.getUser().id);
         if (!beta) {
-            if (!Objects.equals(DiscordIPC.getUser().id, "624957481948413982"))
-            this.client.setScreen(new NoBetaScreen(Text.literal("BlueBerry NoBeta Screen")));
+            if (!Objects.equals(DiscordIPC.getUser().id, "624957481948413982")) {
+                assert this.client != null;
+                this.client.setScreen(new NoBetaScreen(Text.literal("BlueBerry NoBeta Screen")));
+            }
         }
+
+
 
         int i = this.textRenderer.getWidth(Text.translatable("© Mojang"));
         int j = this.width - i - 2;
@@ -65,7 +69,7 @@ public class TitleScreenButtonMixin extends Screen {
             Screen screen = (Screen)(this.client.options.skipMultiplayerWarning ? new MultiplayerScreen(this) : new MultiplayerWarningScreen(this));
             this.client.setScreen(screen);
         }).dimensions(this.width / 2 - 100, var6 = y + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
-        ((ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("Test"), (button) -> this.client.setScreen(new ModSelectionScreen(Text.literal("BlueBerry ModSelection Screen"),logoDrawer))).dimensions(this.width / 2 - 100, y = var6 + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
+        ((ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("Test"), (button) -> this.client.setScreen(new NoBetaScreen(Text.literal("BlueBerry ModSelection Screen")))).dimensions(this.width / 2 - 100, y = var6 + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
         return y;
     }
 

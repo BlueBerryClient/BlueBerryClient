@@ -1,12 +1,9 @@
-package xyz.blackdev.Blueberry.utils;
+package xyz.blackdev.Blueberry.utils.drawing;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
-import net.minecraft.client.gui.screen.multiplayer.MultiplayerWarningScreen;
-import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.text.Text;
 import org.joml.Matrix4f;
@@ -28,6 +25,7 @@ public class RenderUtils extends Screen{
         guiGraphics.fill(x, y, width, y-1, borderColor);
         guiGraphics.fill(x, height, width, height+1, borderColor);
     }
+
     public static void renderBorderedRectWithoutCorners(DrawContext guiGraphics, int x, int y, int width, int height, int color, int borderColor) {
         // BASE
         guiGraphics.fill(x, y, width, height, color);

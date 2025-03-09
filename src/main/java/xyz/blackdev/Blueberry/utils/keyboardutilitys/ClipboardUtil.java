@@ -1,4 +1,4 @@
-package xyz.blackdev.Blueberry.utils;
+package xyz.blackdev.Blueberry.utils.keyboardutilitys;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;

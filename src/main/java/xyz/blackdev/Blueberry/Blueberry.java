@@ -2,7 +2,6 @@ package xyz.blackdev.Blueberry;
 
 import net.minecraft.util.Identifier;
 import xyz.blackdev.Blueberry.basesystem.SystemManager;
-import xyz.blackdev.Blueberry.discord.DiscordRPC;
 import xyz.blackdev.Blueberry.utils.config.ConfigManager;
 
 public class Blueberry {

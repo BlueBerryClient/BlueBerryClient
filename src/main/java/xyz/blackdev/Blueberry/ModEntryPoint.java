@@ -39,9 +39,9 @@ public class ModEntryPoint implements ModInitializer, ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
+        DiscordRPC.Start();
         KeyInputRegestry.register();
         blueBarryEntryPoint.init();
-        DiscordRPC.Start();
         System.out.println("Blueberry has been initialized!");
         MinecraftClient client = MinecraftClient.getInstance();
     }

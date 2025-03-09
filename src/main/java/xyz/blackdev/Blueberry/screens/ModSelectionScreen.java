@@ -4,23 +4,19 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.LogoDrawer;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.Icons;
-import net.minecraft.resource.ResourcePack;
 import net.minecraft.text.Text;
-import xyz.blackdev.Blueberry.mixin.guicomponents.widgets.MixinPressableWidget;
 import xyz.blackdev.Blueberry.notification.Notification;
 import xyz.blackdev.Blueberry.notification.NotificationManager;
 import xyz.blackdev.Blueberry.notification.NotificationType;
 import xyz.blackdev.Blueberry.screens.impl.*;
-import xyz.blackdev.Blueberry.utils.CustomClientButton;
-import xyz.blackdev.Blueberry.utils.RenderUtils;
+import xyz.blackdev.Blueberry.utils.drawing.CustomClientButton;
+import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
 
-import java.awt.*;
-import java.io.IOException;
 import java.util.Objects;
-import java.util.UUID;
 
 public class ModSelectionScreen extends Screen {
+
+
     private final LogoDrawer logoDrawer;
     private final MinecraftClient client = MinecraftClient.getInstance();
     public ModSelectionScreen(Text title, LogoDrawer logoDrawer) {
@@ -31,6 +27,7 @@ public class ModSelectionScreen extends Screen {
     @Override
     protected void init() {
         super.init();
+
         CustomClientButton HUDButton = CustomClientButton.builder(Text.literal("HUD"), (button) -> {
                     client.setScreen(new HudSelectionScreen(Text.of("HUD"), logoDrawer));
         }).position(this.width / 2 - 180, this.height / 2  - 37 -5)

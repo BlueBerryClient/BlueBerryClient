@@ -4,17 +4,13 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.LogoDrawer;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.Icons;
-import net.minecraft.resource.ResourcePack;
 import net.minecraft.text.Text;
 import xyz.blackdev.Blueberry.notification.Notification;
 import xyz.blackdev.Blueberry.notification.NotificationManager;
 import xyz.blackdev.Blueberry.notification.NotificationType;
-import xyz.blackdev.Blueberry.utils.CustomClientButton;
-import xyz.blackdev.Blueberry.utils.RenderUtils;
+import xyz.blackdev.Blueberry.utils.drawing.CustomClientButton;
+import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
 
-import java.awt.*;
-import java.io.IOException;
 import java.util.Objects;
 
 public class ModsSelectionScreen extends Screen {

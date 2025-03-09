@@ -7,7 +7,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import xyz.blackdev.Blueberry.Blueberry;
-import xyz.blackdev.Blueberry.discord.DiscordRPC;
 
 @Mixin(MinecraftClient.class)
 public class MinecraftClientMixin {
@@ -21,4 +20,7 @@ public class MinecraftClientMixin {
     private String getWindowTitle() {
         return Blueberry.name + " - " + Blueberry.version + " - " + Blueberry.author;
         }
+
+
+
 }

@@ -12,7 +12,7 @@ import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import xyz.blackdev.Blueberry.utils.RenderUtils;
+import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
 
 @Mixin({PressableWidget.class})
 public abstract class MixinPressableWidget extends ClickableWidget {

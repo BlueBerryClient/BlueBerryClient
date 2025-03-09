@@ -13,8 +13,7 @@ import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import xyz.blackdev.Blueberry.utils.RenderUtils;
+import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
 
 @Mixin(InGameHud.class)
 public class InGameHudMixin {

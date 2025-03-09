@@ -11,15 +11,17 @@ public class DiscordRPC {
     public static String returnName() {
         if (MinecraftClient.getInstance().player == null) {
             return "BlackDev";
+        } else {
+            return MinecraftClient.getInstance().player.getName().toString();
         }
-        return MinecraftClient.getInstance().player.getName().toString();
     }
 
     public static String returnHead() {
         if (MinecraftClient.getInstance().player == null) {
             return "https://api.mineatar.io/face/6488c79ef4e44b3a90f421bc6be4cde6?scale=32";
+        } else {
+            return "https://api.mineatar.io/face/" + MinecraftClient.getInstance().player.getUuidAsString() + "?scale=32";
         }
-        return "https://api.mineatar.io/face/" + MinecraftClient.getInstance().player.getUuidAsString() + "?scale=32";
     }
 
     public static void Start() {
