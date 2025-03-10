@@ -71,7 +71,7 @@ public class ServerSelectionScreen extends Screen {
             if (client.getWindow().getScaledHeight() < 250) {
                 return;
             } else {
-                RenderUtils.drawtext("Server", 40, 70, 0xFFFFFFFF, true);
+                RenderUtils.drawtext("Server", 40, 70, 1,1,1,0 );
             }
         }
         this.logoDrawer.draw(context, this.width, 1.0F);

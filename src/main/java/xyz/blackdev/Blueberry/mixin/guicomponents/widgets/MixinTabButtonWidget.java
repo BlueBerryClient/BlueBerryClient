@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
 
 @Mixin({TabButtonWidget.class})
 public abstract class MixinTabButtonWidget extends ClickableWidget {
@@ -58,7 +59,8 @@ public abstract class MixinTabButtonWidget extends ClickableWidget {
       int j = this.getY();
       int k = this.getX() + this.getWidth() - 1;
       int l = this.getY() + this.getHeight();
-      drawScrollableText(context, textRenderer, this.getMessage(), i, j, k, l, color);
+      //drawScrollableText(context, textRenderer, this.getMessage(), i, j, k, l, color);
+      RenderUtils.text(this.getMessage(),k,l,1,1,1,1);
    }
 
    /**

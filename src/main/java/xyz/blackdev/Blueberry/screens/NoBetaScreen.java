@@ -1,16 +1,24 @@
 package xyz.blackdev.Blueberry.screens;
 
+import me.x150.renderer.font.FontRenderer;
 import meteordevelopment.discordipc.DiscordIPC;
+import net.minecraft.client.font.FontLoader;
+import net.minecraft.client.font.FontManager;
+import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.font.TrueTypeFontLoader;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.LogoDrawer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.PressableTextWidget;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
-import xyz.blackdev.Blueberry.utils.drawing.RoundedRects;
+import net.minecraft.util.Identifier;
 import xyz.blackdev.Blueberry.utils.keyboardutilitys.OpenLinkUtil;
 import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
 import xyz.blackdev.Blueberry.utils.WebhookSender;
 
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -33,7 +41,7 @@ public class NoBetaScreen extends Screen {
     @Override
     protected void init() {
         super.init();
-        this.addDrawableChild(new PressableTextWidget(200, 130, 50, 10, Text.literal("Discord"), (button) -> OpenLinkUtil.openLink("https://discord.gg/sUq8CCXfCQ"), this.textRenderer));
+        this.addDrawableChild(new PressableTextWidget(197, 130, 50, 10, Text.literal("Discord"), (button) -> OpenLinkUtil.openLink("https://discord.gg/sUq8CCXfCQ"), this.textRenderer));
 if (done == false) {
     try {
         if (client.player == null) {
@@ -49,13 +57,15 @@ if (done == false) {
 
     }
 
+
+    //File font = new File("resources/assets/blueberry/textures/font/Harabara.ttf");
+
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        RoundedRects.drawRoundedRect( 100, 100, 10, 10,0xffffffff,50);
         RenderUtils.renderBorderedRect(context, 30, 60, this.width - 30, this.height - 30, 0x80000000, 0xFF000000);
-        RenderUtils.drawtext("I Dont know how you got this Client, But the Client is still in Beta.", 60, 90, 0xFFFFFFFF, true);
-        RenderUtils.drawtext("If you believe this is a error please report to the BlueBerry Staff.", 45, 110, 0xFFFFFFFF, true);
         this.logoDrawer.draw(context, this.width, 1.0F);
+        RenderUtils.drawtext("I Dont know how you got this Client, But the Client is still in Beta.", 90, 90, 1,1,1, 1);
+        RenderUtils.drawtext("If you believe this is a error please report to the BlueBerry Staff.", 95, 110, 1,1,1, 1);
     }
 }

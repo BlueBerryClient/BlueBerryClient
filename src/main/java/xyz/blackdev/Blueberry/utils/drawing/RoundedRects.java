@@ -80,6 +80,4 @@ public class RoundedRects {
 
         BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
     }
-
-
 }
