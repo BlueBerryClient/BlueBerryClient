@@ -11,12 +11,9 @@ import xyz.blackdev.Blueberry.notification.NotificationType;
 import xyz.blackdev.Blueberry.screens.impl.*;
 import xyz.blackdev.Blueberry.utils.drawing.CustomClientButton;
 import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
-
 import java.util.Objects;
 
 public class ModSelectionScreen extends Screen {
-
-
     private final LogoDrawer logoDrawer;
     private final MinecraftClient client = MinecraftClient.getInstance();
     public ModSelectionScreen(Text title, LogoDrawer logoDrawer) {
@@ -63,12 +60,10 @@ public class ModSelectionScreen extends Screen {
 
     @Override
     public void renderInGameBackground(DrawContext context) {
-
     }
 
     @Override
     public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {
-
     }
 
     @Override

@@ -1,34 +1,25 @@
 package xyz.blackdev.Blueberry.screens;
 
-import me.x150.renderer.font.FontRenderer;
 import meteordevelopment.discordipc.DiscordIPC;
-import net.minecraft.client.font.FontLoader;
-import net.minecraft.client.font.FontManager;
-import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.font.TrueTypeFontLoader;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.LogoDrawer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.PressableTextWidget;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import xyz.blackdev.Blueberry.utils.keyboardutilitys.OpenLinkUtil;
 import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
 import xyz.blackdev.Blueberry.utils.WebhookSender;
-
-import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
 public class NoBetaScreen extends Screen {
 
+    boolean done = false;
     private LogoDrawer logoDrawer = new LogoDrawer(true);
 
     public NoBetaScreen(Text title) {
         super(title);
-        this.logoDrawer = (LogoDrawer) Objects.requireNonNullElseGet(logoDrawer, () -> new LogoDrawer(false));
+        this.logoDrawer = Objects.requireNonNullElseGet(logoDrawer, () -> new LogoDrawer(false));
     }
 
     @Override
@@ -36,13 +27,11 @@ public class NoBetaScreen extends Screen {
         super.renderBackground(context, mouseX, mouseY, delta);
     }
 
-    boolean done = false;
-
     @Override
     protected void init() {
         super.init();
         this.addDrawableChild(new PressableTextWidget(197, 130, 50, 10, Text.literal("Discord"), (button) -> OpenLinkUtil.openLink("https://discord.gg/sUq8CCXfCQ"), this.textRenderer));
-if (done == false) {
+if (!done) {
     try {
         if (client.player == null) {
             WebhookSender.sendEmbed("Illegal Client Start Detected", " Without Beta Access his discord id is " + DiscordIPC.getUser().id + " .", WebhookSender.LogLevel.ERROR);
@@ -54,11 +43,7 @@ if (done == false) {
     }
     done = true;
 }
-
     }
-
-
-    //File font = new File("resources/assets/blueberry/textures/font/Harabara.ttf");
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
