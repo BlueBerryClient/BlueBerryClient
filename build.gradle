@@ -56,9 +56,8 @@ dependencies {
     modImplementation 'io.github.humbleui:skija-macos-arm64:0.116.4'
  */
 
-    modImplementation "io.github.0x3c50.renderer:renderer-fabric:1.2.5"
-    include "io.github.0x3c50.renderer:renderer-fabric:1.2.5"
-}
+    modImplementation include("io.github.0x3c50.renderer:renderer-fabric:1.2.5")
+    }
 
 processResources {
     inputs.property "version", project.version
