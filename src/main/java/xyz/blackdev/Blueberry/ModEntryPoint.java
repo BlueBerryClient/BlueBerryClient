@@ -17,6 +17,7 @@ import xyz.blackdev.Blueberry.events.Events.ConnectEventListener;
 import xyz.blackdev.Blueberry.events.Events.RenderEvent;
 import xyz.blackdev.Blueberry.keys.KeyInputRegestry;
 import xyz.blackdev.Blueberry.utils.ApiClient;
+import xyz.blackdev.Blueberry.utils.altmanager.AltManager;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
@@ -44,7 +45,10 @@ public class ModEntryPoint implements ModInitializer, ClientModInitializer {
         blueBarryEntryPoint.init();
         System.out.println("Blueberry has been initialized!");
         MinecraftClient client = MinecraftClient.getInstance();
+        altmanager = new AltManager();
     }
+
+    public static AltManager altmanager;
 
     protected static Blueberry getBlueBarryEntryPoint() {
         return blueBarryEntryPoint;

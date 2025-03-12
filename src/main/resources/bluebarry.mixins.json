@@ -20,6 +20,7 @@
     "renderers.LogoDrawerMixin",
     "screenmixins.titlescreen.TitleScreenButtonMixin",
     "screenmixins.titlescreen.TitleScreenTextMixin",
+    "utils.IMinecraftClient",
     "utils.serverreturns.MixinClientBrandRetriever",
     "utils.tick.ClientTickMixin",
     "utils.tick.PendingConnectionMixin"

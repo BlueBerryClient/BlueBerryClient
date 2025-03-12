@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import xyz.blackdev.Blueberry.discord.DiscordRPC;
 import xyz.blackdev.Blueberry.screens.ModSelectionScreen;
 import xyz.blackdev.Blueberry.screens.NoBetaScreen;
+import xyz.blackdev.Blueberry.screens.alts.AltScreen;
 import xyz.blackdev.Blueberry.utils.ApiClient;
 
 import java.util.Objects;
@@ -69,7 +70,8 @@ public class TitleScreenButtonMixin extends Screen {
             Screen screen = (Screen)(this.client.options.skipMultiplayerWarning ? new MultiplayerScreen(this) : new MultiplayerWarningScreen(this));
             this.client.setScreen(screen);
         }).dimensions(this.width / 2 - 100, var6 = y + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
-        ((ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("Test"), (button) -> this.client.setScreen(new NoBetaScreen(Text.literal("BlueBerry ModSelection Screen")))).dimensions(this.width / 2 - 100, y = var6 + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
+        Screen TitleScreen = new TitleScreen();
+        ((ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("Test"), (button) -> this.client.setScreen(new AltScreen((TitleScreen)))).dimensions(this.width / 2 - 100, y = var6 + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
         return y;
     }
 
