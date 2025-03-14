@@ -16,6 +16,8 @@ import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.text.Text;
 import xyz.blackdev.Blueberry.ModEntryPoint;
 import xyz.blackdev.Blueberry.utils.altmanager.Alt;
+import xyz.blackdev.Blueberry.utils.altmanager.login.AuthToken;
+import xyz.blackdev.Blueberry.utils.altmanager.login.MicrosoftAuth;
 
 public class AddAltScreen extends Screen {
 
@@ -32,7 +34,6 @@ public class AddAltScreen extends Screen {
 
     public void init() {
         super.init();
-
         this.textFieldAltUsername = new TextFieldWidget(textRenderer, this.width / 2 - 100, height / 2 - 36, 200, 20,
                 Text.of("Enter Name"));
         this.textFieldAltUsername.setText("");

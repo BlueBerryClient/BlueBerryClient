@@ -1,5 +1,5 @@
 /*
- * Aoba Hacked Client
+ * BlueBerry Hacked Client
  * Copyright (C) 2019-2024 coltonk9043
  *
  * Licensed under the GNU General Public License, Version 3 or later.
@@ -36,7 +36,7 @@ import xyz.blackdev.Blueberry.utils.HttpUtils;
 import xyz.blackdev.Blueberry.utils.altmanager.Alt;
 
 public class MicrosoftAuth {
-	private static final String CLIENT_ID = "f42554e9-a14f-4cc5-a5c1-7f410e3a7803";
+	private static final String CLIENT_ID = "f98dbf4a-3b56-4af2-91d3-306f045aa3e2";
 	private static final URI TOKEN_URL = HttpUtils.createURI("https://login.live.com/oauth20_token.srf");
 	private static final URI XBL_URL = HttpUtils.createURI("https://user.auth.xboxlive.com/user/authenticate");
 	private static final URI XBLAUTH_URL = HttpUtils.createURI("https://xsts.auth.xboxlive.com/xsts/authorize");
@@ -229,7 +229,7 @@ public class MicrosoftAuth {
 							onDataReceived.accept(token);
 						} catch (Exception e) {
 							LogUtils.getLogger()
-									.info("[Aoba] Error occured while fetching Access Tokens from Microsoft");
+									.info("[BlueBerry] Error occured while fetching Access Tokens from Microsoft");
 							onDataReceived.accept(null);
 						}
 
@@ -239,7 +239,7 @@ public class MicrosoftAuth {
 			}
 
 			if (!found) {
-				LogUtils.getLogger().info("[Aoba] Unable to get Access Tokens from Microsoft");
+				LogUtils.getLogger().info("[BlueBerry] Unable to get Access Tokens from Microsoft");
 				onDataReceived.accept(null);
 			}
 
