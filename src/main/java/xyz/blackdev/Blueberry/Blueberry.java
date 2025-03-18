@@ -26,8 +26,6 @@ public class Blueberry {
 
     protected void init() {
         OverlayManager overlayManager = new OverlayManager();
-
-
          this.module().register(overlayManager);
 
          overlayManager.register(new FPS());
