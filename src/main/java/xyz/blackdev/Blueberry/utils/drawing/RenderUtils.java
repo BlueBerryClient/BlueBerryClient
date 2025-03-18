@@ -2,14 +2,11 @@ package xyz.blackdev.Blueberry.utils.drawing;
 
 import me.x150.renderer.font.FontRenderer;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
-import org.joml.Matrix4f;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -49,7 +46,7 @@ public class RenderUtils extends Screen{
     static {
         try {
             // Load the font from the file path
-            File fontFile = new File("resources/assets/blueberry/textures/font/font.ttf");
+            File fontFile = new File("resources/assets/blueberry/textures/font/Fredoka-Bold.ttf");
             Font baseFont = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 
             // Derive the font with the desired size
@@ -75,5 +72,4 @@ public class RenderUtils extends Screen{
         VertexConsumerProvider.Immediate vertexConsumerProvider = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
         fr.drawCenteredText(matrix,text,x,y,a);
     }
-
 }

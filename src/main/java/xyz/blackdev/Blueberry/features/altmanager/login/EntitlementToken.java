@@ -1,4 +1,4 @@
-package xyz.blackdev.Blueberry.utils.altmanager.login;
+package xyz.blackdev.Blueberry.features.altmanager.login;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;

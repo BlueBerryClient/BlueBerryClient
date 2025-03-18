@@ -6,11 +6,11 @@
  * See <http://www.gnu.org/licenses/>.
  */
 
-package xyz.blackdev.Blueberry.utils.altmanager;
+package xyz.blackdev.Blueberry.features.altmanager;
 
 
-import xyz.blackdev.Blueberry.utils.altmanager.login.AuthToken;
-import xyz.blackdev.Blueberry.utils.altmanager.login.MicrosoftAuth;
+import xyz.blackdev.Blueberry.features.altmanager.login.AuthToken;
+import xyz.blackdev.Blueberry.features.altmanager.login.MicrosoftAuth;
 
 public class Alt {
 	private String email;

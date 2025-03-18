@@ -29,7 +29,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
 import net.minecraft.util.Uuids;
-import xyz.blackdev.Blueberry.utils.altmanager.Alt;
+import xyz.blackdev.Blueberry.features.altmanager.Alt;
 
 public class AltSelectionList extends AlwaysSelectedEntryListWidget<AltSelectionList.Entry> {
 	private final AltScreen owner;

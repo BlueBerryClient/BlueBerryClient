@@ -6,7 +6,7 @@
  * See <http://www.gnu.org/licenses/>.
  */
 
-package xyz.blackdev.Blueberry.utils;
+package xyz.blackdev.Blueberry.utils.connection;
 
 import java.net.HttpURLConnection;
 import java.net.URI;

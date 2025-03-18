@@ -1,4 +1,4 @@
-package xyz.blackdev.Blueberry.utils;
+package xyz.blackdev.Blueberry.utils.connection;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

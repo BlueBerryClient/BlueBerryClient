@@ -1,7 +1,6 @@
 package xyz.blackdev.Blueberry.mixin.screenmixins.titlescreen;
 
 import meteordevelopment.discordipc.DiscordIPC;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.LogoDrawer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.TitleScreen;
@@ -11,17 +10,14 @@ import net.minecraft.client.gui.screen.option.OptionsScreen;
 import net.minecraft.client.gui.screen.world.SelectWorldScreen;
 import net.minecraft.client.gui.tooltip.Tooltip;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import xyz.blackdev.Blueberry.discord.DiscordRPC;
-import xyz.blackdev.Blueberry.screens.ModSelectionScreen;
 import xyz.blackdev.Blueberry.screens.NoBetaScreen;
 import xyz.blackdev.Blueberry.screens.alts.AltScreen;
-import xyz.blackdev.Blueberry.utils.ApiClient;
+import xyz.blackdev.Blueberry.utils.connection.ApiClient;
 
 import java.util.Objects;
 
@@ -71,7 +67,7 @@ public class TitleScreenButtonMixin extends Screen {
             this.client.setScreen(screen);
         }).dimensions(this.width / 2 - 100, var6 = y + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
         Screen TitleScreen = new TitleScreen();
-        ((ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("Test"), (button) -> this.client.setScreen(new AltScreen((TitleScreen)))).dimensions(this.width / 2 - 100, y = var6 + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
+        ((ButtonWidget)this.addDrawableChild(ButtonWidget.builder(Text.translatable("Test"), (button) -> this.client.setScreen(new AltScreen(TitleScreen))).dimensions(this.width / 2 - 100, y = var6 + spacingY, 200, 20).tooltip(tooltip).build())).active = bl;
         return y;
     }
 

@@ -13,6 +13,6 @@ public abstract class ClientTickMixin {
 
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
-        Blueberry.instance().system().tick();
+        Blueberry.instance().module().tick();
     }
 }

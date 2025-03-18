@@ -10,14 +10,12 @@ package xyz.blackdev.Blueberry.screens.alts;
 
 import java.util.List;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.CubeMapRenderer;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.RotatingCubeMapRenderer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 import xyz.blackdev.Blueberry.ModEntryPoint;
-import xyz.blackdev.Blueberry.utils.altmanager.Alt;
+import xyz.blackdev.Blueberry.features.altmanager.Alt;
 
 public class AltScreen extends Screen {
 

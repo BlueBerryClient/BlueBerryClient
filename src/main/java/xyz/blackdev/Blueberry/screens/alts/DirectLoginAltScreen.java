@@ -14,7 +14,7 @@ import net.minecraft.client.gui.widget.CheckboxWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.text.Text;
 import xyz.blackdev.Blueberry.ModEntryPoint;
-import xyz.blackdev.Blueberry.utils.altmanager.Alt;
+import xyz.blackdev.Blueberry.features.altmanager.Alt;
 
 public class DirectLoginAltScreen extends Screen {
 

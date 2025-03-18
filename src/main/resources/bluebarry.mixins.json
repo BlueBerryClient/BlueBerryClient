@@ -16,11 +16,11 @@
     "guicomponents.widgets.MixinSliderWidget",
     "guicomponents.widgets.MixinTabButtonWidget",
     "player.LivingEntityRendererMixin",
-    "renderers.GameRendererMixin",
     "renderers.LogoDrawerMixin",
     "screenmixins.titlescreen.TitleScreenButtonMixin",
     "screenmixins.titlescreen.TitleScreenTextMixin",
     "utils.IMinecraftClient",
+    "utils.render.RenderMixin",
     "utils.serverreturns.MixinClientBrandRetriever",
     "utils.tick.ClientTickMixin",
     "utils.tick.PendingConnectionMixin"

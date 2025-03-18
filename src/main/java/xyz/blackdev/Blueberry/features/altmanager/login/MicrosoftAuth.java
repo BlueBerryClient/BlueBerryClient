@@ -1,12 +1,12 @@
 /*
- * BlueBerry Hacked Client
- * Copyright (C) 2019-2024 coltonk9043
+ * BlueBerry Client
+ * Copyright (C) 2019-2024 BlackDev
  *
  * Licensed under the GNU General Public License, Version 3 or later.
  * See <http://www.gnu.org/licenses/>.
  */
 
-package xyz.blackdev.Blueberry.utils.altmanager.login;
+package xyz.blackdev.Blueberry.features.altmanager.login;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -31,12 +31,13 @@ import net.minecraft.client.session.Session;
 import net.minecraft.client.session.report.AbuseReportContext;
 import net.minecraft.client.session.report.ReporterEnvironment;
 import net.minecraft.util.Util;
+import xyz.blackdev.Blueberry.Blueberry;
 import xyz.blackdev.Blueberry.mixin.utils.IMinecraftClient;
-import xyz.blackdev.Blueberry.utils.HttpUtils;
-import xyz.blackdev.Blueberry.utils.altmanager.Alt;
+import xyz.blackdev.Blueberry.utils.connection.HttpUtils;
+import xyz.blackdev.Blueberry.features.altmanager.Alt;
 
 public class MicrosoftAuth {
-	private static final String CLIENT_ID = "e92d34e9-149f-40fc-bbf2-5e5d4f3c43f4";
+	private static final String CLIENT_ID = "f98dbf4a-3b56-4af2-91d3-306f045aa3e2";
 	private static final URI TOKEN_URL = HttpUtils.createURI("https://login.live.com/oauth20_token.srf");
 	private static final URI XBL_URL = HttpUtils.createURI("https://user.auth.xboxlive.com/user/authenticate");
 	private static final URI XBLAUTH_URL = HttpUtils.createURI("https://xsts.auth.xboxlive.com/xsts/authorize");

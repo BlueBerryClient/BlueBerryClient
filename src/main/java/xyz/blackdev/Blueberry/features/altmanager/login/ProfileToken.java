@@ -6,7 +6,7 @@
  * See <http://www.gnu.org/licenses/>.
  */
 
-package xyz.blackdev.Blueberry.utils.altmanager.login;
+package xyz.blackdev.Blueberry.features.altmanager.login;
 
 import com.google.gson.JsonObject;
 

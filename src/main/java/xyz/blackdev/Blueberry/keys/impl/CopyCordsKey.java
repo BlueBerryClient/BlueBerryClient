@@ -11,13 +11,9 @@ public class CopyCordsKey implements Key {
         return GLFW.GLFW_KEY_H;
     }
 
-    ConfigManager configManager = new ConfigManager();
-
     @Override
     public void pressAction() {
-        if (configManager.getConfigValue("COPYCOORDS").equals("false")) {
-            return;
-        }else {
+           {
             if (MinecraftClient.getInstance().player != null) {
                 MinecraftClient.getInstance().keyboard.setClipboard(MinecraftClient.getInstance().player.getBlockPos().toShortString());
             }

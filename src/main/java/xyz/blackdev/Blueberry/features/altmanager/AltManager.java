@@ -1,6 +1,6 @@
 
 
-package xyz.blackdev.Blueberry.utils.altmanager;
+package xyz.blackdev.Blueberry.features.altmanager;
 
 import java.io.File;
 import java.io.FileReader;
@@ -25,7 +25,7 @@ import net.minecraft.client.session.Session.AccountType;
 import net.minecraft.util.Uuids;
 import xyz.blackdev.Blueberry.mixin.utils.IMinecraftClient;
 import xyz.blackdev.Blueberry.utils.SystemUtils;
-import xyz.blackdev.Blueberry.utils.altmanager.login.MicrosoftAuth;
+import xyz.blackdev.Blueberry.features.altmanager.login.MicrosoftAuth;
 
 public class AltManager {
 	private ArrayList<Alt> alts = new ArrayList<Alt>();

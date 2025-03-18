@@ -1,4 +1,4 @@
-package xyz.blackdev.Blueberry.utils.altmanager;
+package xyz.blackdev.Blueberry.features.altmanager;
 
 public class XboxLiveToken {
 	private final String token;

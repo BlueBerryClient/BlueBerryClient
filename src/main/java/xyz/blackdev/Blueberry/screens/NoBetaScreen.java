@@ -8,7 +8,7 @@ import net.minecraft.client.gui.widget.PressableTextWidget;
 import net.minecraft.text.Text;
 import xyz.blackdev.Blueberry.utils.keyboardutilitys.OpenLinkUtil;
 import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
-import xyz.blackdev.Blueberry.utils.WebhookSender;
+import xyz.blackdev.Blueberry.utils.connection.WebhookSender;
 import java.io.IOException;
 import java.util.Objects;
 
