@@ -9,6 +9,7 @@ import xyz.blackdev.Blueberry.notification.Notification;
 import xyz.blackdev.Blueberry.notification.NotificationManager;
 import xyz.blackdev.Blueberry.notification.NotificationType;
 import xyz.blackdev.Blueberry.screens.impl.*;
+import xyz.blackdev.Blueberry.utils.config.ConfigInitializer;
 import xyz.blackdev.Blueberry.utils.drawing.CustomClientButton;
 import xyz.blackdev.Blueberry.utils.drawing.RenderUtils;
 import java.util.Objects;
@@ -44,11 +45,7 @@ public class ModSelectionScreen extends Screen {
             client.setScreen(new ServerSelectionScreen(Text.of("Server"), logoDrawer));
         }).position(this.width / 2 - 180, this.height / 2   + 59 -5).size(60, 20).build();
         CustomClientButton AdminButton = CustomClientButton.builder(Text.literal("Admin"), (button) -> {
-          if (Objects.equals(client.player.getUuidAsString(), "6488c79e-f4e4-4b3a-90f4-21bc6be4cde6")) {
-              client.setScreen(new AdminSelectionScreen(Text.of("Admin"), logoDrawer));
-          } else {
-              client.setScreen(new ModSelectionScreen(Text.of("Default"), logoDrawer));
-          }
+              client.setScreen(new OverlaysScreen(this));
         }).position(this.width / 2 - 180, this.height / 2    + 83 -5).size(60, 20).build();
         this.addDrawableChild(HUDButton);
         this.addDrawableChild(CosmeticButton);

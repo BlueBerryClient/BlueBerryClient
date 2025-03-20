@@ -20,6 +20,10 @@ repositories {
         url = "https://maven.meteordev.org"
     }
     maven {
+        name "craftsblockReleases"
+        url "https://repo.craftsblock.de/releases"
+    }
+    maven {
         url = uri("https://packages.jetbrains.team/maven/p/skija/maven/")
     }
     mavenCentral()
@@ -37,6 +41,9 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
     implementation 'com.google.code.gson:gson:2.8.9'
     modImplementation (include "org.json:json:20250107")
+
+    implementation "de.craftsblock:craftscore:3.8.3-SNAPSHOT"
+    include "de.craftsblock:craftscore:3.8.3-SNAPSHOT"
 
     implementation 'com.squareup.okhttp3:okhttp:4.9.3'
     implementation 'com.google.code.gson:gson:2.8.9'

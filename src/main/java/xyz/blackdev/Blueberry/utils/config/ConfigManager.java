@@ -53,66 +53,45 @@ public class ConfigManager {
     }
 
     /**
-     * Registers a new configuration.
+     * Registers and loads a configuration.
+     * If the configuration exists on disk, it will be loaded.
+     * Otherwise, a new configuration will be created using the default supplier.
      *
      * @param name The name of the configuration (will be used as filename)
      * @param defaultSupplier A supplier that provides the default configuration
      * @param configClass The class of the configuration
      * @param <T> The type of the configuration
-     * @return The loaded configuration
+     * @return The loaded or created configuration
      */
     public <T> T register(String name, Supplier<T> defaultSupplier, Class<T> configClass) {
         ConfigEntry<T> entry = new ConfigEntry<>(name, defaultSupplier, configClass);
         configs.put(name, entry);
 
-        // Load or create the config
-        return loadConfig(name, defaultSupplier, configClass);
-    }
-
-    /**
-     * Creates a new configuration with a custom name.
-     *
-     * @param name The custom name for the configuration
-     * @param initialConfig The initial configuration object
-     * @param <T> The type of the configuration
-     * @return The created configuration
-     */
-    public <T> T createConfig(String name, T initialConfig) {
-        if (configs.containsKey(name)) {
-            LOGGER.warn("Configuration '{}' already exists, overwriting", name);
-        }
-
-        @SuppressWarnings("unchecked")
-        Class<T> configClass = (Class<T>) initialConfig.getClass();
-
-        ConfigEntry<T> entry = new ConfigEntry<>(name, () -> initialConfig, configClass);
-        configs.put(name, entry);
-        entry.setValue(initialConfig);
-
-        // Save the config
-        saveConfig(name);
-
-        LOGGER.info("Created new configuration '{}' for mod {}", name, modId);
-        return initialConfig;
+        return loadOrCreateConfig(name, defaultSupplier, configClass);
     }
 
     /**
      * Loads a configuration from disk or creates a new one if it doesn't exist.
+     * This method can be used both for initial loading and reloading configurations.
      *
      * @param name The name of the configuration
-     * @param defaultSupplier A supplier that provides the default configuration
+     * @param defaultSupplier A supplier that provides the default configuration (only used if config doesn't exist)
      * @param configClass The class of the configuration
      * @param <T> The type of the configuration
      * @return The loaded configuration
      */
     @SuppressWarnings("unchecked")
-    public <T> T loadConfig(String name, Supplier<T> defaultSupplier, Class<T> configClass) {
-        if (!configs.containsKey(name)) {
-            register(name, defaultSupplier, configClass);
-        }
-
-        ConfigEntry<T> entry = (ConfigEntry<T>) configs.get(name);
+    public <T> T loadOrCreateConfig(String name, Supplier<T> defaultSupplier, Class<T> configClass) {
         Path configPath = configDir.resolve(name + ".json");
+
+        // Use existing ConfigEntry or create a new one
+        ConfigEntry<T> entry;
+        if (configs.containsKey(name)) {
+            entry = (ConfigEntry<T>) configs.get(name);
+        } else {
+            entry = new ConfigEntry<>(name, defaultSupplier, configClass);
+            configs.put(name, entry);
+        }
 
         // Check if config file exists
         if (Files.exists(configPath)) {
@@ -140,38 +119,38 @@ public class ConfigManager {
     }
 
     /**
-     * Loads a configuration from disk with a custom name.
+     * Creates or updates a configuration.
+     * If the configuration exists, it will be updated.
+     * Otherwise, a new configuration will be created.
      *
      * @param name The name of the configuration
-     * @param configClass The class of the configuration
+     * @param config The configuration object
      * @param <T> The type of the configuration
-     * @return The loaded configuration or null if it doesn't exist
+     * @return The updated or created configuration
      */
     @SuppressWarnings("unchecked")
-    public <T> T loadCustomConfig(String name, Class<T> configClass) {
-        Path configPath = configDir.resolve(name + ".json");
+    public <T> T saveOrUpdateConfig(String name, T config) {
+        if (configs.containsKey(name)) {
+            // Update existing config
+            ConfigEntry<T> entry = (ConfigEntry<T>) configs.get(name);
+            entry.setValue(config);
 
-        // Check if config file exists
-        if (!Files.exists(configPath)) {
-            LOGGER.warn("Configuration '{}' does not exist", name);
-            return null;
-        }
-
-        try (Reader reader = Files.newBufferedReader(configPath)) {
-            JsonObject json = JsonParser.parseReader(reader).getAsJsonObject();
-            T config = GSON.fromJson(json, configClass);
-
-            // Register the loaded config
+            // Notify listeners
+            if (changeListeners.containsKey(name)) {
+                changeListeners.get(name).accept(config);
+            }
+        } else {
+            // Create new config
+            Class<T> configClass = (Class<T>) config.getClass();
             ConfigEntry<T> entry = new ConfigEntry<>(name, () -> config, configClass);
             configs.put(name, entry);
             entry.setValue(config);
-
-            LOGGER.info("Loaded custom configuration '{}' for mod {}", name, modId);
-            return config;
-        } catch (Exception e) {
-            LOGGER.error("Failed to load custom configuration '{}' for mod {}", name, modId, e);
-            return null;
+            LOGGER.info("Created new configuration '{}' for mod {}", name, modId);
         }
+
+        // Save the config
+        saveConfig(name);
+        return config;
     }
 
     /**
@@ -228,29 +207,48 @@ public class ConfigManager {
     }
 
     /**
-     * Updates a configuration.
+     * Reloads a specific configuration from disk.
      *
-     * @param name The name of the configuration
-     * @param config The new configuration
+     * @param name The name of the configuration to reload
      * @param <T> The type of the configuration
-     * @return true if the update was successful, false otherwise
+     * @return The reloaded configuration or null if it couldn't be reloaded
      */
     @SuppressWarnings("unchecked")
-    public <T> boolean updateConfig(String name, T config) {
+    public <T> T reloadConfig(String name) {
         if (!configs.containsKey(name)) {
-            LOGGER.error("Cannot update non-existent configuration '{}'", name);
-            return false;
+            LOGGER.warn("Cannot reload non-existent configuration '{}'", name);
+            return null;
         }
 
-        ConfigEntry<T> entry = (ConfigEntry<T>) configs.get(name);
-        entry.setValue(config);
+        ConfigEntry<?> rawEntry = configs.get(name);
 
-        // Notify listeners
-        if (changeListeners.containsKey(name)) {
-            changeListeners.get(name).accept(config);
+        try {
+            ConfigEntry<T> entry = (ConfigEntry<T>) rawEntry;
+            Supplier<T> defaultSupplier = entry.getDefaultSupplier();
+            Class<T> configClass = entry.getConfigClass();
+
+            T config = loadOrCreateConfig(name, defaultSupplier, configClass);
+
+            // Notify listeners
+            if (changeListeners.containsKey(name)) {
+                changeListeners.get(name).accept(config);
+            }
+
+            return config;
+        } catch (ClassCastException e) {
+            LOGGER.error("Type error when reloading configuration '{}'", name, e);
+            return null;
         }
+    }
 
-        return saveConfig(name);
+    /**
+     * Reloads all configurations from disk.
+     */
+    public void reloadAllConfigs() {
+        for (String name : new ArrayList<>(configs.keySet())) {  // Use a copy to avoid concurrent modification
+            reloadConfig(name);
+        }
+        LOGGER.info("Reloaded all configurations for mod {}", modId);
     }
 
     /**
@@ -316,60 +314,22 @@ public class ConfigManager {
     }
 
     /**
-     * Reloads all configurations from disk.
-     * Fixed to properly handle generic types.
-     */
-    public void reloadAllConfigs() {
-        for (String name : new ArrayList<>(configs.keySet())) {  // Use a copy to avoid concurrent modification
-            reloadConfig(name);
-        }
-        LOGGER.info("Reloaded all configurations for mod {}", modId);
-    }
-
-    /**
-     * Reloads a specific configuration from disk.
+     * Checks if a configuration exists in memory.
      *
-     * @param name The name of the configuration to reload
-     * @param <T> The type of the configuration
-     * @return The reloaded configuration or null if it couldn't be reloaded
+     * @param name The name of the configuration
+     * @return true if the configuration exists in memory, false otherwise
      */
-    @SuppressWarnings("unchecked")
-    public <T> T reloadConfig(String name) {
-        if (!configs.containsKey(name)) {
-            LOGGER.warn("Cannot reload non-existent configuration '{}'", name);
-            return null;
-        }
-
-        ConfigEntry<?> rawEntry = configs.get(name);
-
-        try {
-            // Use type-safe approach to avoid generic type issues
-            ConfigEntry<T> entry = (ConfigEntry<T>) rawEntry;
-            Supplier<T> defaultSupplier = entry.getDefaultSupplier();
-            Class<T> configClass = entry.getConfigClass();
-
-            // Reload using the type-safe parameters
-            T config = loadConfig(name, defaultSupplier, configClass);
-
-            // Notify listeners
-            if (changeListeners.containsKey(name)) {
-                changeListeners.get(name).accept(config);
-            }
-
-            return config;
-        } catch (ClassCastException e) {
-            LOGGER.error("Type error when reloading configuration '{}'", name, e);
-            return null;
-        }
+    public boolean hasConfig(String name) {
+        return configs.containsKey(name);
     }
 
     /**
      * Checks if a configuration exists on disk.
      *
      * @param name The name of the configuration
-     * @return true if the configuration exists, false otherwise
+     * @return true if the configuration exists on disk, false otherwise
      */
-    public boolean configExists(String name) {
+    public boolean configExistsOnDisk(String name) {
         Path configPath = configDir.resolve(name + ".json");
         return Files.exists(configPath);
     }
