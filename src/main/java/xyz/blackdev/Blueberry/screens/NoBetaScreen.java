@@ -34,9 +34,9 @@ public class NoBetaScreen extends Screen {
 if (!done) {
     try {
         if (client.player == null) {
-            WebhookSender.sendEmbed("Illegal Client Start Detected", " Without Beta Access his discord id is " + DiscordIPC.getUser().id + " .", WebhookSender.LogLevel.ERROR);
+            WebhookSender.sendEmbed("Illegal Client Start Detected", " Without Beta Access User's discord ID is " + DiscordIPC.getUser().id + " .", WebhookSender.LogLevel.ERROR);
         } else {
-            WebhookSender.sendEmbed("Illegal Client Start Detected", "The Client got started by " + client.player.getName() + " Without Beta Access his discord id is " + DiscordIPC.getUser().id + " .", WebhookSender.LogLevel.ERROR);
+            WebhookSender.sendEmbed("Illegal Client Start Detected", "The Client got started by " + client.player.getName() + " without Beta Access User's discord ID is " + DiscordIPC.getUser().id + " .", WebhookSender.LogLevel.ERROR);
         }
     } catch (IOException e) {
         throw new RuntimeException(e);
@@ -51,6 +51,6 @@ if (!done) {
         RenderUtils.renderBorderedRect(context, 30, 60, this.width - 30, this.height - 30, 0x80000000, 0xFF000000);
         this.logoDrawer.draw(context, this.width, 1.0F);
         RenderUtils.drawtext("I Dont know how you got this Client, But the Client is still in Beta.", 90, 90, 1,1,1, 1);
-        RenderUtils.drawtext("If you believe this is a error please report to the BlueBerry Staff.", 95, 110, 1,1,1, 1);
+        RenderUtils.drawtext("If you believe this is an error please report to the BlueBerry Staff.", 95, 110, 1,1,1, 1);
     }
 }
