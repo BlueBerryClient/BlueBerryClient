@@ -37,14 +37,6 @@ public class TitleScreenButtonMixin extends Screen {
     @Overwrite
     public void init() {
 
-        boolean beta = ApiClient.checkUserHasRole(DiscordIPC.getUser().id);
-        if (!beta) {
-            if (!Objects.equals(DiscordIPC.getUser().id, "624957481948413982")) {
-                assert this.client != null;
-                this.client.setScreen(new NoBetaScreen(Text.literal("BlueBerry NoBeta Screen")));
-            }
-        }
-
 
 
         int i = this.textRenderer.getWidth(Text.translatable("© Mojang"));
